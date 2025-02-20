@@ -1,14 +1,18 @@
 import logging
 from aiogram import Bot, Dispatcher, types
-from aiogram.contrib.middlewares.logging import LoggingMiddleware
+from aiogram.types import ParseMode
 from aiogram.utils import executor
+from aiogram.contrib.middlewares.logging import LoggingMiddleware
 from config import TELEGRAM_API_TOKEN
 from search import torrent_search
 
+# Setting up logging
 logging.basicConfig(level=logging.INFO)
 
 bot = Bot(token=TELEGRAM_API_TOKEN)
 dp = Dispatcher(bot)
+
+# Middleware setup
 dp.middleware.setup(LoggingMiddleware())
 
 @dp.message_handler(commands=['start', 'help'])
