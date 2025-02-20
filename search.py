@@ -3,8 +3,14 @@ from httpx import AsyncClient
 from html import escape
 from urllib.parse import quote
 
-# Absolute import instead of relative import
-from LOGGER import LOGGER  # Change this line
+# Setting up the logger
+LOGGER = logging.getLogger(__name__)
+LOGGER.setLevel(logging.INFO)
+ch = logging.StreamHandler()
+ch.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+ch.setFormatter(formatter)
+LOGGER.addHandler(ch)
 
 from core.config_manager import Config
 from core.torrent_manager import TorrentManager
@@ -17,6 +23,7 @@ from helper.telegram_helper.message_utils import edit_message, send_message
 PLUGINS = []
 SITES = None
 TELEGRAPH_LIMIT = 300
+
 
 
 
