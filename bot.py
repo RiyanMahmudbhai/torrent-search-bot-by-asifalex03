@@ -1,6 +1,6 @@
 import logging
 from aiogram import Bot, Dispatcher, types
-from aiogram.utils import executor
+from aiogram.types import ParseMode
 from config import TELEGRAM_API_TOKEN
 from search import torrent_search
 
@@ -18,5 +18,10 @@ async def send_welcome(message: types.Message):
 async def handle_search(message: types.Message):
     await torrent_search(message)
 
+# Start polling with the new method for aiogram v3.x
+async def on_start():
+    await dp.start_polling()
+
 if __name__ == '__main__':
-    executor.start_polling(dp, skip_updates=True)
+    import asyncio
+    asyncio.run(on_start())
