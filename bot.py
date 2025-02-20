@@ -1,6 +1,5 @@
 import logging
 from aiogram import Bot, Dispatcher, types
-from aiogram.types import ParseMode
 from config import TELEGRAM_API_TOKEN
 from search import torrent_search
 
@@ -12,6 +11,7 @@ dp = Dispatcher(bot)
 
 @dp.message_handler(commands=['start', 'help'])
 async def send_welcome(message: types.Message):
+    # No need to import ParseMode, just use types.ParseMode directly
     await message.reply("Welcome to the Torrent Search Bot! Use /search <keyword> to search for torrents.")
 
 @dp.message_handler(commands=['search'])
