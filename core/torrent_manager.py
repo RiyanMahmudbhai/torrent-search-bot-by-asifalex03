@@ -3,11 +3,9 @@ from contextlib import suppress
 from pathlib import Path
 from aioaria2 import Aria2WebsocketClient
 from aioqbt.client import create_client
-from LOGGER import LOGGER
-from aria2_options import aria2_options
 import logging
 
-# Setting up the logger directly in this file
+# Define the LOGGER directly in this file
 LOGGER = logging.getLogger(__name__)
 LOGGER.setLevel(logging.INFO)
 ch = logging.StreamHandler()
@@ -18,9 +16,7 @@ LOGGER.addHandler(ch)
 
 from core.config_manager import Config
 from aioqbt.client import create_client
-# other imports
-
-
+# other imports...
 
 class TorrentManager:
     aria2 = None
