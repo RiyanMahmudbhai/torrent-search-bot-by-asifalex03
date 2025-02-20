@@ -5,7 +5,9 @@ from pathlib import Path
 from aioaria2 import Aria2WebsocketClient
 from aioqbt.client import create_client
 
-from .. import LOGGER, aria2_options
+from LOGGER import LOGGER
+from aria2_options import aria2_options
+
 
 
 class TorrentManager:
