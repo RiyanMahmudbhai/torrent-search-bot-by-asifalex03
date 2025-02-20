@@ -1,19 +1,23 @@
+import logging
 from httpx import AsyncClient
 from html import escape
 from urllib.parse import quote
 
-from .. import LOGGER
-from ..core.config_manager import Config
-from ..core.torrent_manager import TorrentManager
-from ..helper.ext_utils.bot_utils import new_task
-from ..helper.ext_utils.status_utils import get_readable_file_size
-from ..helper.ext_utils.telegraph_helper import telegraph
-from ..helper.telegram_helper.button_build import ButtonMaker
-from ..helper.telegram_helper.message_utils import edit_message, send_message
+# Absolute import instead of relative import
+from LOGGER import LOGGER  # Change this line
+
+from core.config_manager import Config
+from core.torrent_manager import TorrentManager
+from helper.ext_utils.bot_utils import new_task
+from helper.ext_utils.status_utils import get_readable_file_size
+from helper.ext_utils.telegraph_helper import telegraph
+from helper.telegram_helper.button_build import ButtonMaker
+from helper.telegram_helper.message_utils import edit_message, send_message
 
 PLUGINS = []
 SITES = None
 TELEGRAPH_LIMIT = 300
+
 
 
 async def initiate_search_tools():
